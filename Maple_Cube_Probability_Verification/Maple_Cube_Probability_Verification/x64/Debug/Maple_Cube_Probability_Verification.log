@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\Karl\source\repos\Maple_Verification\Maple_Cube_Probability_Verification\Maple_Cube_Probability_Verification\function.h(114,12): warning C4778: 'printf' : 서식 문자열 '%\n'이(가) 종결되지 않았습니다.
+C:\Users\Karl\source\repos\Maple_Verification\Maple_Cube_Probability_Verification\Maple_Cube_Probability_Verification\function.h(192,40): warning C4552: '/': 식의 결과가 사용되지 않습니다.
+  Maple_Cube_Probability_Verification.vcxproj -> C:\Users\Karl\source\repos\Maple_Verification\Maple_Cube_Probability_Verification\x64\Debug\Maple_Cube_Probability_Verification.exe
