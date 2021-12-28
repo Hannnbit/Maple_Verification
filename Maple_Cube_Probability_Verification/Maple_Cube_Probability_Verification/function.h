@@ -52,16 +52,29 @@ int SelectCube()
     int cubeNum = _getch() - 48;
     return cubeNum;
 }
-int CurrentCubeGrade()
+int CurrentCubeGrade(int cube)
 {
     system("cls");
-    printf("=========현재 잠재=========\n");
-    printf("1. 레어\n");
-    printf("2. 에픽\n");
-    printf("3. 유니크\n");
-    printf("===========================\n");
+    int cubeGrade = 0;
 
-    int cubeGrade = _getch() - 48;
+    if (cube == CubeStrange) {
+        cubeGrade = 1;
+    }
+    else if (cube == CubeSemiMaster) {
+        printf("=========현재 잠재=========\n");
+        printf("1. 레어\n");
+        printf("2. 에픽\n");
+        printf("===========================\n");
+        cubeGrade = _getch() - 48;
+    }
+    else {
+        printf("=========현재 잠재=========\n");
+        printf("1. 레어\n");
+        printf("2. 에픽\n");
+        printf("3. 유니크\n");
+        printf("===========================\n");
+        cubeGrade = _getch() - 48;
+    }
     return cubeGrade;
 }
 int SelectCubeGoal()
@@ -139,57 +152,57 @@ int GetTotalCube(int cube, int cubeGrade, int cubeGoal, int miracleTime, double 
     int totalCubeCnt = 0;
     switch (cube)
     {
-    case CubeStrange: {
-        totalCubeCnt = GetCubeCnt(expected, CUBE_STRANGE_EPIC);
-        break;
-    }
-    case CubeSemiMaster: {
-        if (cubeGoal >= Epic && cubeGrade < Epic)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_SEMIMASTER_EPIC);
-        if (cubeGoal >= Unique && cubeGrade < Unique)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_SEMIMASTER_UNIQUE);
-        break;
-    }
-    case CubeMaster: {
-        if (cubeGoal >= Epic && cubeGrade < Epic)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_EPIC);
-        if (cubeGoal >= Unique && cubeGrade < Unique)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_UNIQUE);
-        if (cubeGoal == Legend && cubeGrade < Legend)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_LEGEND);
-        break;
-    }
-    case CubeRed: {
-        if (cubeGoal >= Epic && cubeGrade < Epic)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_RED_EPIC);
-        if (cubeGoal >= Unique && cubeGrade < Unique)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_RED_UNIQUE);
-        if (cubeGoal == Legend && cubeGrade < Legend)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_RED_LEGEND);
-        break;
-    }
-    case CubeBlack: {
-        if (cubeGoal >= Epic && cubeGrade < Epic)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_EPIC);
-        if (cubeGoal >= Unique && cubeGrade < Unique)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_UNIQUE);
-        if (cubeGoal == Legend && cubeGrade < Legend)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_LEGEND);
-        break;
-    }
-    case CubeEditional: {
-        if (cubeGoal >= Epic && cubeGrade < Epic)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_EPIC);
-        if (cubeGoal >= Unique && cubeGrade < Unique)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_UNIQUE);
-        if (cubeGoal == Legend && cubeGrade < Legend)
-            totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_LEGEND);
-        break;
-    }
+        case CubeStrange: {
+            totalCubeCnt = GetCubeCnt(expected, CUBE_STRANGE_EPIC);
+            break;
+        }
+        case CubeSemiMaster: {
+            if (cubeGoal >= Epic && cubeGrade < Epic)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_SEMIMASTER_EPIC);
+            if (cubeGoal >= Unique && cubeGrade < Unique)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_SEMIMASTER_UNIQUE);
+            break;
+        }
+        case CubeMaster: {
+            if (cubeGoal >= Epic && cubeGrade < Epic)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_EPIC);
+            if (cubeGoal >= Unique && cubeGrade < Unique)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_UNIQUE);
+            if (cubeGoal == Legend && cubeGrade < Legend)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_MASTER_LEGEND);
+            break;
+        }
+        case CubeRed: {
+            if (cubeGoal >= Epic && cubeGrade < Epic)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_RED_EPIC);
+            if (cubeGoal >= Unique && cubeGrade < Unique)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_RED_UNIQUE);
+            if (cubeGoal == Legend && cubeGrade < Legend)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_RED_LEGEND);
+            break;
+        }
+        case CubeBlack: {
+            if (cubeGoal >= Epic && cubeGrade < Epic)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_EPIC);
+            if (cubeGoal >= Unique && cubeGrade < Unique)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_UNIQUE);
+            if (cubeGoal == Legend && cubeGrade < Legend)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_BLACK_LEGEND);
+            break;
+        }
+        case CubeEditional: {
+            if (cubeGoal >= Epic && cubeGrade < Epic)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_EPIC);
+            if (cubeGoal >= Unique && cubeGrade < Unique)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_UNIQUE);
+            if (cubeGoal == Legend && cubeGrade < Legend)
+                totalCubeCnt += GetCubeCnt(expected, CUBE_EDITIONAL_LEGEND);
+            break;
+        }
     }
 
-    if (miracleTime && (totalCubeCnt % 2)) totalCubeCnt = (totalCubeCnt + 1) / 2;
-    else if (miracleTime) totalCubeCnt / 2;
+    if (miracleTime && totalCubeCnt > 1)
+        totalCubeCnt /= 2;
 
     return totalCubeCnt;
 }

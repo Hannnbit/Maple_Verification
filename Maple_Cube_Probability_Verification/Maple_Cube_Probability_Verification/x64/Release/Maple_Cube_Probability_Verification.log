@@ -1,0 +1,7 @@
+﻿  main.c
+C:\Users\Karl\source\repos\Maple_Verification\Maple_Cube_Probability_Verification\Maple_Cube_Probability_Verification\function.h(127,12): warning C4778: 'printf' : 서식 문자열 '%\n'이(가) 종결되지 않았습니다.
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 18 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Maple_Cube_Probability_Verification.vcxproj -> C:\Users\Karl\source\repos\Maple_Verification\Maple_Cube_Probability_Verification\x64\Release\Maple_Cube_Probability_Verification.exe

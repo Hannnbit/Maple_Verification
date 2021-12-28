@@ -1,4 +1,5 @@
 #include "function.h"
+#include <time.h>
 
 void main()
 {
@@ -6,7 +7,7 @@ void main()
     do
     {
         int cube = SelectCube();
-        int cubeGrade = CurrentCubeGrade();
+        int cubeGrade = CurrentCubeGrade(cube);
         int cubeGoal = GetCubeGoal(cube);
         int miracleTime = CheckMiracle();
 
