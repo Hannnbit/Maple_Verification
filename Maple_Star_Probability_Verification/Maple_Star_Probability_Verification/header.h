@@ -5,6 +5,8 @@
 #include <string.h>
 #include <math.h>
 
+long long expectedMeso[25] = { 0 };
+
 int GetItemLevel()
 {
 	printf("Input Item Level : ");
@@ -69,10 +71,41 @@ int GetNeededMeso(int itemLevel, int currentStar)
 	}
 	return (int)meso;
 }
-int GetExProMeso(int star, double sucpro, double meso)
+long long GetExProMeso(int star, double sucPro, double meso, int itemLevel, int starCatch, int totalMeso)
 {
-	if (star < 11)
-		return (int)(100 / sucpro * meso);
-	else
-		return 0;
+	double upPer = sucPro;
+	double failPer = 100 - sucPro;
+	double desPer[13] = { 0.6,1.3,1.4,2.1,2.1,2.1,2.8,2.8,7,7,19.4,29.4,39.6};
+
+	if (expectedMeso[star] == 0)
+	{
+		if (star <= 10)
+		{
+			expectedMeso[star] = (long long)(100 / upPer * meso);
+		}
+		else if (star == 11)
+		{
+			double upPerMeso = 100 / upPer * meso;
+			double failPerMeso = 100 / failPer * expectedMeso[star - 1];
+			expectedMeso[star] = (upPerMeso + failPerMeso);
+		}
+		else if (star <= 16)
+		{
+			failPer -= desPer[star - 12];
+			double upPerMeso = 100 / upPer * meso;
+			double failPerMeso = 100 / failPer * expectedMeso[star - 1];
+			double desPerMeso = 100 / desPer[star-12] * totalMeso;
+			expectedMeso[star] = (upPerMeso*upPer/100 + failPerMeso*failPer/100 + desPerMeso*desPer[star-12]/100);
+		}
+		else
+		{
+			failPer -= desPer[star - 12];
+			double upPerMeso = 100 / upPer * meso;
+			double failPerMeso = 100 / failPer * expectedMeso[star - 1];
+			double desPerMeso = 100 / desPer[star - 12] * totalMeso;
+			expectedMeso[star] = (upPerMeso + failPerMeso + desPerMeso);
+		}
+	}
+
+	return expectedMeso[star];
 }
